@@ -2,6 +2,7 @@
 
 import json
 import os
+import random
 import time
 import xml.etree.ElementTree as ET
 from datetime import datetime
@@ -11,10 +12,46 @@ from urllib.error import HTTPError
 
 ROOT = 'https://zestedesavoir.com'
 FLUX = [
-    ('/tutoriels/flux/rss/', 'nouveau tutoriel'),
-    ('/articles/flux/rss/', 'nouvel article'),
-    ('/billets/flux/rss/', 'nouveau billet'),
-    ('/forums/flux/sujets/rss/', 'nouveau sujet')
+    '/tutoriels/flux/rss/',
+    '/articles/flux/rss/',
+    '/billets/flux/rss/',
+    '/forums/flux/sujets/rss/',
+]
+CATCH_PHRASES = [
+    # Tutorials
+    [
+        'Un nouveau tutoriel est en ligne',
+        'Oyé oyé, un nouveau tutoriel est en ligne',
+        'À vos souris, un nouveau tutoriel est en ligne',
+        'De nouvelles connaissances s\'offrent à vous : un nouveau tuto est en ligne',
+        'Préparez vos neurones, un nouveau tutoriel est en ligne',
+        'Pressez-vous les agrumes, un nouveau tutoriel est en ligne !',
+        'Hey, un tutoriel vient de paraître ! Ça pourrait peut être t’intéresser ?',
+    ],
+    # Articles
+    [
+        'Un nouvel article est en ligne',
+        'Oyé oyé, un nouvel article est en ligne',
+        'À vos souris, un nouvel article est en ligne',
+        'Pressez-vous les agrumes, un nouvel article est en ligne !',
+        'Hey, un article vient de paraître ! Ça pourrait peut être t’intéresser ?',
+    ],
+    # Posts
+    [
+        'Un nouveau billet est en ligne',
+        'Oyé oyé, un nouveau billet est en ligne',
+        'À vos souris, un nouveau billet est en ligne',
+        'Pressez-vous les agrumes, un nouveau billet est en ligne !',
+        'Hey, un billet vient de paraître ! Ça pourrait peut être t’intéresser ?',
+    ],
+    # Topics
+    [
+        'Un nouveau sujet est en ligne',
+        'Oyé oyé, un nouveau sujet est en ligne',
+        'À vos souris, un nouveau sujet est en ligne',
+        'Pressez-vous les agrumes, un nouveau sujet est en ligne !',
+        'Hey, un sujet vient de paraître ! Ça pourrait peut être t’intéresser ?',
+    ]
 ]
 WEBHOOK_URL = open('webhook_url.txt').read()
 
@@ -61,9 +98,9 @@ def get_items_from_url(url, force=False):
     return items
 
 
-def post_item_to_discord(item, content_type):
+def post_item_to_discord(item, catch_phrase):
     payload = {
-        'content': 'Un {} est est ligne !'.format(content_type),
+        'content': catch_phrase,
         'embeds': [{
             'title': item['title'],
             'description': item['description'],
@@ -93,8 +130,8 @@ def post_item_to_discord(item, content_type):
 
 
 if __name__ == '__main__':
-    for f in FLUX:
-        items = get_items_from_url(ROOT + f[0])
+    for idx, f in enumerate(FLUX):
+        items = get_items_from_url(ROOT + f)
         for item in items:
-            post_item_to_discord(item, f[1])
+            post_item_to_discord(item, random.choice(CATCH_PHRASES[idx]))
             time.sleep(2)  # Lazy workaround to not break the rate limit
