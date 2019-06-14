@@ -21,7 +21,7 @@ CATCH_PHRASES = [
     # Tutorials
     [
         'Un nouveau tutoriel est en ligne',
-        'Oyé oyé, un nouveau tutoriel est en ligne',
+        'Oyez, oyez ! un nouveau tutoriel est en ligne',
         'À vos souris, un nouveau tutoriel est en ligne',
         'De nouvelles connaissances s\'offrent à vous : un nouveau tuto est en ligne',
         'Préparez vos neurones, un nouveau tutoriel est en ligne',
@@ -31,7 +31,7 @@ CATCH_PHRASES = [
     # Articles
     [
         'Un nouvel article est en ligne',
-        'Oyé oyé, un nouvel article est en ligne',
+        'Oyez, oyez ! un nouvel article est en ligne',
         'À vos souris, un nouvel article est en ligne',
         'Pressez-vous les agrumes, un nouvel article est en ligne !',
         'Hey, un article vient de paraître ! Ça pourrait peut être t’intéresser ?',
@@ -39,7 +39,7 @@ CATCH_PHRASES = [
     # Posts
     [
         'Un nouveau billet est en ligne',
-        'Oyé oyé, un nouveau billet est en ligne',
+        'Oyez, oyez ! un nouveau billet est en ligne',
         'À vos souris, un nouveau billet est en ligne',
         'Pressez-vous les agrumes, un nouveau billet est en ligne !',
         'Hey, un billet vient de paraître ! Ça pourrait peut être t’intéresser ?',
@@ -47,7 +47,7 @@ CATCH_PHRASES = [
     # Topics
     [
         'Un nouveau sujet est en ligne',
-        'Oyé oyé, un nouveau sujet est en ligne',
+        'Oyez, oyez ! un nouveau sujet est en ligne',
         'À vos souris, un nouveau sujet est en ligne',
         'Pressez-vous les agrumes, un nouveau sujet est en ligne !',
         'Hey, un sujet vient de paraître ! Ça pourrait peut être t’intéresser ?',
