@@ -60,7 +60,8 @@ HORO_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'horodatag
 
 def get_items_from_url(url, force=False):
     print(url)
-    page = request.urlopen(url).read()
+    req = request.Request(url, headers={'User-Agent': 'zds-discord-bot/1.0'})
+    page = request.urlopen(req).read()
     root = ET.fromstring(page)
 
     lastBuildList = {}
